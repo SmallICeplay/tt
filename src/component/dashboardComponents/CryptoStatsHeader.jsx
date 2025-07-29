@@ -36,51 +36,53 @@ const CryptoStatsHeader = () => {
   // ]
 
   return (
-      <div className="p-4 bg-gray-100 min-h-screen space-y-4">
-        <div className="grid grid-cols-4 gap-4">
-          <div className="bg-white p-4 rounded shadow text-center">Kickstarter 项目1</div>
-          <div className="bg-white p-4 rounded shadow text-center">Kickstarter 项目2</div>
-          <div className="bg-white p-4 rounded shadow text-center">Kickstarter 项目3</div>
-          <div className="bg-white p-4 rounded shadow text-center">Kickstarter 项目4</div>
+      <div className="p-4 bg-gray-50 min-h-screen space-y-6 font-sans">
+        {/* Kickstarter 项目区 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {['Kickstarter 项目1', 'Kickstarter 项目2', 'Kickstarter 项目3', 'Kickstarter 项目4'].map((item, i) => (
+              <div key={i} className="bg-white p-6 rounded-2xl shadow-lg text-center hover:shadow-xl transition">
+                {item}
+              </div>
+          ))}
         </div>
 
-        <div className="text-xl font-bold text-gray-800">100万“明星计划”数据看板</div>
+        {/* 标题 */}
+        <div className="text-2xl font-bold text-gray-800">100万“明星计划”数据看板</div>
 
-        <div className="grid grid-cols-12 grid-rows-[auto_auto_auto_auto_auto] gap-4">
-          <div className="col-span-3 row-span-2 bg-white rounded shadow p-4 flex flex-col items-center justify-center">
+        {/* 主内容布局 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-4">
+          {/* 推荐卡 */}
+          <div className="xl:col-span-3 xl:row-span-2 bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center justify-center">
             <div className="text-sm text-gray-600 mb-2">XBot 推荐卡</div>
-            <img className="w-full h-48 object-cover rounded mb-2" src="https://via.placeholder.com/300x150"/>
-            <div className="text-xl font-bold">5900351972020</div>
+            <img className="w-full h-48 object-cover rounded-xl mb-3" src="https://via.placeholder.com/300x150" />
+            <div className="text-xl font-semibold tracking-wide">5900351972020</div>
           </div>
 
-          <div className="col-span-3 row-span-1 bg-white rounded shadow p-4 text-center">
-            <div className="text-sm text-gray-500">社区活跃度 BTC</div>
-            <div className="text-2xl font-bold">3132 个</div>
-            <div className="text-xs text-gray-400">¥43419.20</div>
-          </div>
+          {/* 3 个数值卡 */}
+          {[
+            { title: '社区活跃度 BTC', value: '3132 个', price: '¥43419.20' },
+            { title: '社区活跃度 ETH', value: '1202560', price: '¥2279.63' },
+            { title: '已兑换数量 XING', value: '43.00', price: '¥2270.12' }
+          ].map((item, i) => (
+              <div key={i} className="xl:col-span-3 bg-white rounded-2xl shadow-lg p-4 text-center">
+                <div className="text-sm text-gray-500">{item.title}</div>
+                <div className="text-2xl font-bold text-blue-600 mt-1">{item.value}</div>
+                <div className="text-xs text-gray-400 mt-1">{item.price}</div>
+              </div>
+          ))}
 
-          <div className="col-span-3 row-span-1 bg-white rounded shadow p-4 text-center">
-            <div className="text-sm text-gray-500">社区活跃度 ETH</div>
-            <div className="text-2xl font-bold">1202560</div>
-            <div className="text-xs text-gray-400">¥2279.63</div>
-          </div>
-
-          <div className="col-span-3 row-span-1 bg-white rounded shadow p-4 text-center">
-            <div className="text-sm text-gray-500">已兑换数量 XING</div>
-            <div className="text-2xl font-bold">43.00</div>
-            <div className="text-xs text-gray-400">¥2270.12</div>
-          </div>
-
-          <div className="col-span-6 row-span-2 bg-white rounded shadow p-4">
-            <div className="font-semibold mb-2">100万明星计划余额走势</div>
-            <div className="h-40 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
+          {/* 折线图 */}
+          <div className="xl:col-span-6 xl:row-span-2 bg-white rounded-2xl shadow-lg p-6">
+            <div className="font-semibold mb-3">100万明星计划余额走势</div>
+            <div className="h-40 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 text-sm">
               折线图占位（可接 ECharts）
             </div>
           </div>
 
-          <div className="col-span-3 row-span-1 bg-white rounded shadow p-4">
-            <div className="font-semibold mb-2">主流币种</div>
-            <ul className="text-sm space-y-1">
+          {/* 主流币种 */}
+          <div className="xl:col-span-3 bg-white rounded-2xl shadow-lg p-6">
+            <div className="font-semibold mb-3">主流币种</div>
+            <ul className="text-sm space-y-2">
               <li>BTC ¥43419.20 <span className="text-red-500 text-xs">-3.5%</span></li>
               <li>ETH ¥2279.63 <span className="text-green-500 text-xs">+2.8%</span></li>
               <li>USDT ¥7.15</li>
@@ -89,9 +91,10 @@ const CryptoStatsHeader = () => {
             </ul>
           </div>
 
-          <div className="col-span-3 row-span-1 bg-white rounded shadow p-4">
-            <div className="font-semibold mb-2">今日热门用户</div>
-            <ul className="text-sm text-gray-700 space-y-1">
+          {/* 热门用户 */}
+          <div className="xl:col-span-3 bg-white rounded-2xl shadow-lg p-6">
+            <div className="font-semibold mb-3">今日热门用户</div>
+            <ul className="text-sm text-gray-700 space-y-2">
               <li>👤 七星战神</li>
               <li>👤 七星战神</li>
               <li>👤 七星战神</li>
@@ -99,9 +102,10 @@ const CryptoStatsHeader = () => {
             </ul>
           </div>
 
-          <div className="col-span-6 row-span-1 bg-white rounded shadow p-4">
-            <div className="font-semibold mb-2">今日社区成交</div>
-            <table className="w-full text-sm">
+          {/* 成交记录（可横向滚动） */}
+          <div className="xl:col-span-6 bg-white rounded-2xl shadow-lg p-6 overflow-x-auto">
+            <div className="font-semibold mb-3">今日社区成交</div>
+            <table className="w-full min-w-[500px] text-sm">
               <thead>
               <tr className="text-left text-gray-500 border-b">
                 <th className="py-1">交易对</th>
@@ -133,17 +137,19 @@ const CryptoStatsHeader = () => {
             </table>
           </div>
 
-          <div
-              className="col-span-3 row-span-1 bg-blue-100 rounded shadow p-4 text-center flex flex-col justify-between">
+          {/* Premium 卡片 */}
+          <div className="xl:col-span-3 bg-blue-100 rounded-2xl shadow-lg p-6 text-center flex flex-col justify-between">
             <div>
-              <div className="font-semibold text-blue-700 mb-1">TRY OUR PREMIUM FEATURES</div>
-              <p className="text-sm text-blue-600 mb-2">Let AI help you understand crypto!</p>
+              <div className="font-semibold text-blue-700 mb-2">TRY OUR PREMIUM FEATURES</div>
+              <p className="text-sm text-blue-600 mb-3">Let AI help you understand crypto!</p>
             </div>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700">Explore Features
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+              Explore Features
             </button>
           </div>
         </div>
       </div>
+
   )
 }
 
