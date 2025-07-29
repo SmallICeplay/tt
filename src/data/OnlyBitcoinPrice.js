@@ -1,0 +1,35 @@
+const bitcoin = [
+    {
+        "id": "bitcoin",
+        "symbol": "btc",
+        "name": "Bitcoin",
+        "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+        "current_price": 28797,
+        "market_cap": 558640986251,
+        "market_cap_rank": 1,
+        "fully_diluted_valuation": 604465423667,
+        "total_volume": 19517712421,
+        "high_24h": 28891,
+        "low_24h": 26667,
+        "onehour": 0.55,
+        "tfhours": 0.23,
+        "sevendays": 0.87,
+        "price_change_24h": 1824.12,
+        "price_change_percentage_24h": 6.76293,
+        "market_cap_change_24h": 35362190068,
+        "market_cap_change_percentage_24h": 6.75781,
+        "circulating_supply": 19407993.0,
+        "total_supply": 21000000.0,
+        "max_supply": 21000000.0,
+        "ath": 69045,
+        "ath_change_percentage": -58.31585,
+        "ath_date": "2021-11-10T14:24:11.849Z",
+        "atl": 67.81,
+        "atl_change_percentage": 42343.81152,
+        "atl_date": "2013-07-06T00:00:00.000Z",
+        "roi": null,
+        "last_updated": "2023-06-21T05:13:20.108Z"
+    },
+];
+
+export default bitcoin;
